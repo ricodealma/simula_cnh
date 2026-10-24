@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Simulado CNH MG – Prova Teórica</title>
+  <meta name="description" content="Simulado gratuito da prova teórica do DETRAN-MG com questões do Banco Nacional de Questões da Senatran: 30 questões, 60 minutos, aprovação com 20 acertos.">
+  <meta name="theme-color" content="#0b5cab">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><polygon points='30,2 70,2 98,30 98,70 70,98 30,98 2,70 2,30' fill='%23c8102e'/><text x='50' y='62' font-size='30' font-family='Arial' font-weight='bold' fill='white' text-anchor='middle'>CNH</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topo">
+    <div class="topo-inner">
+      <a href="#" class="marca" data-acao="inicio">Simulado <strong>CNH MG</strong></a>
+      <div id="relogio" class="relogio" hidden aria-live="off">
+        <span class="relogio-rotulo">Tempo restante</span>
+        <span id="relogio-valor">60:00</span>
+      </div>
+    </div>
+  </header>
+
+  <main id="app" class="conteudo">
+    <p class="carregando">Carregando banco de questões…</p>
+  </main>
+
+  <footer class="rodape">
+    <p>
+      Questões: <em>Banco Nacional de Questões – Versão 1.0</em>, CNH do Brasil / Secretaria Nacional de Trânsito (Senatran),
+      público conforme o art. 33 da Resolução CONTRAN nº 1.020/2025. Imagens das placas: Wikimedia Commons e desenhos próprios.
+      Projeto independente de estudo, sem vínculo com o DETRAN-MG.
+    </p>
+  </footer>
+
+  <template id="tpl-inicio">
+    <section class="cartao inicio">
+      <span class="etiqueta">Modo simulação</span>
+      <h1>Simulado da prova teórica do DETRAN-MG</h1>
+      <p class="sub">Uma prova completa nas mesmas condições da oficial, com <strong data-total-sim>600</strong> questões selecionadas do Banco Nacional de Questões e divididas por matéria como na prova.</p>
+
+      <ul class="regras">
+        <li><span class="num">30</span><span>questões de múltipla escolha</span></li>
+        <li><span class="num">4</span><span>alternativas, só uma correta</span></li>
+        <li><span class="num">20</span><span>acertos para ser aprovado</span></li>
+        <li><span class="num" data-minutos>60</span><span>minutos de prova</span></li>
+      </ul>
+
+      <label class="opcao">
+        <input type="checkbox" id="tempo-dobro">
+        <span>Tempo em dobro (candidatos com dislexia, TDAH ou TEA – art. 33, §4º)</span>
+      </label>
+
+      <div class="acoes">
+        <button class="btn primario" data-acao="iniciar-prova" data-banco="simulacao">Iniciar simulação</button>
+        <button class="btn" data-acao="retomar" hidden>Retomar prova em andamento</button>
+      </div>
+
+      <ul class="distribuicao" data-distribuicao></ul>
+
+      <details class="como">
+        <summary>Como funciona a prova</summary>
+        <ul>
+          <li>As 30 questões são sorteadas por matéria: <span data-distribuicao-texto></span>.</li>
+          <li>As questões vêm do Banco Nacional de Questões da Senatran, de onde o DETRAN-MG sorteia a prova oficial. O simulado usa uma seleção mais enxuta: sem repetições, com prioridade para as questões baseadas no CTB e nas resoluções e para as do bloco "Teste seus conhecimentos" do próprio banco.</li>
+          <li>Você pode navegar entre as questões e trocar a resposta até finalizar.</li>
+          <li>Quando o tempo acaba, a prova é encerrada e corrigida automaticamente. Questões em branco contam como erro.</li>
+          <li>Na prova real não é permitida nenhuma consulta. Se reprovar, você pode refazer a prova; a segunda tentativa não tem taxa adicional.</li>
+        </ul>
+        <p class="fonte">Regras: Resolução CONTRAN nº 1.020/2025, arts. 31 a 34.</p>
+      </details>
+    </section>
+
+    <section class="cartao">
+      <span class="etiqueta">Modo estudo</span>
+      <h2>Estude com o banco completo</h2>
+      <p class="sub">Todas as <strong data-total>1.500</strong> questões do Banco Nacional de Questões, organizadas pelos 4 módulos do curso CNH do Brasil.</p>
+      <div class="acoes">
+        <button class="btn" data-acao="iniciar-prova" data-banco="completo">Prova com o banco completo (30 questões, cronometrada)</button>
+      </div>
+      <h3 class="subtitulo">Treino por módulo</h3>
+      <p class="sub">Responda sem cronômetro e veja a correção e o comentário a cada questão.</p>
+      <div class="modulos" data-modulos></div>
+    </section>
+
+    <section class="cartao" data-historico hidden>
+      <h2>Seus últimos simulados</h2>
+      <ol class="historico" data-historico-lista></ol>
+    </section>
+  </template>
+
+  <script src="js/app.js" type="module"></script>
+</body>
+</html>
